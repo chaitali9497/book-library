@@ -1,0 +1,38 @@
+.notfound {
+  padding-top: 120px;
+  text-align: center;
+}
+
+
+.notfound h1 {
+  font-size: 80px;
+  background: linear-gradient(90deg, #e9d7ff, #c8a4ff, #a172ff);
+  background-clip: text;
+  color: transparent;
+}
+
+
+.notfound p {
+  margin: 10px 0;
+  color: #4a2e72; 
+}
+
+
+.notfound a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 22px;
+
+  background: #a172ff; 
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+
+.notfound a:hover {
+  background: #8b56ff; 
+  box-shadow: 0 4px 12px rgba(130, 70, 255, 0.4);
+}
