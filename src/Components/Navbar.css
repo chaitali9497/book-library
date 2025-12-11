@@ -1,0 +1,153 @@
+.navbar {
+  width: 100%;
+  padding: 18px 25px;
+  background: linear-gradient(90deg, #e9d7ff, #c8a4ff, #a172ff);
+   color: #2d1b4e;
+  border-radius: 12px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(255, 150, 150, 0.3);
+}
+
+
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  padding: 5px;
+}
+
+.logo-box h2 {
+  color: #ffd86a;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  transition: 0.3s ease;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+
+.nav-menu li a::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #ffd86a;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+.nav-menu li a:hover {
+  color: #ffd86a;
+}
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 300;
+  padding: 10px;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+ 
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 33vh;
+    width: 100%;
+    background: linear-gradient(90deg, #e9d7ff, #c8a4ff, #a172ff);
+   color: #2d1b4e;
+    flex-direction: column;
+    padding: 100px 25px;
+    gap: 25px;
+    transition: right 0.38s ease;
+    
+  }
+
+  .nav-menu.show {
+    right: 0;
+  }
+
+  .nav-menu li a {
+    font-size: 18px;
+    padding: 12px;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-box h2 {
+    font-size: 19px;
+  }
+
+  .navbar {
+    padding: 10px 16px;
+  }
+}

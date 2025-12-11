@@ -1,0 +1,24 @@
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0 25px;
+}
+
+.stars span {
+  font-size: 32px;
+  cursor: pointer;
+  color: #c9b6ff; 
+  transition: 0.25s ease;
+}
+
+.stars span:hover {
+  transform: scale(1.25);
+  color: #9b6bff; 
+}
+
+.stars span.active {
+  color: #a46bff; 
+  text-shadow: 0 0 8px rgba(164, 107, 255, 0.4);
+  transform: scale(1.15);
+}
