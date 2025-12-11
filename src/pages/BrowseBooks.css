@@ -1,0 +1,57 @@
+.browse {
+  padding: 60px 20px;
+  background: #faf7ff; 
+  min-height: 100vh;
+ 
+}
+
+.browse h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #5a2bc8;
+}
+
+.browse input {
+  width: 100%;
+  max-width: 450px;
+  display: block;
+  margin: 0 auto 30px auto;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid #c8a6ff;
+  background: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(150, 84, 255, 0.08);
+}
+
+.browse input:focus {
+  border-color: #7f52ff;
+  box-shadow: 0 4px 12px rgba(127, 82, 255, 0.2);
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 25px;
+  padding-top: 10px;
+}
+
+.book-list p {
+  grid-column: 1 / -1;      
+  text-align: center;
+  font-size: 18px;
+  color: #6b4da0;
+  opacity: 0.9;
+  margin-top: 20px;
+}
+.success-msg {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
