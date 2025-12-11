@@ -1,0 +1,126 @@
+/* Main container */
+.home {
+  max-width: 100%;
+  margin:  auto;
+  padding: 40px;
+  background: #f8f4ff;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #4a2c82;
+}
+
+.sub{
+  text-align: center;
+  font-size: 18px;
+  color: #6b4da0;
+  margin-bottom: 40px;
+}
+.sub-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #553b88;
+  margin-bottom: 10px;
+}
+
+/* Category section */
+.categories {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.categories p {
+  padding: 10px 18px;
+  background: #e9dcff;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.categories p:hover {
+  background: #d5c3ff;
+}
+
+/* Active category */
+.categories p.active {
+  background: #7a47ff;
+  color: white;
+  font-weight: 600;
+  border: 1px solid #6740e6;
+  box-shadow: 0 4px 12px rgba(122, 71, 255, 0.4);
+}
+
+/* Section title */
+.section-title {
+  margin-top: 30px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #3d2a68;
+}
+
+/* Book grid */
+.book-list {
+  display: grid;
+  gap: 22px;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+
+
+/* Browse button */
+.browse-btn {
+  margin: 25px auto;
+  display: block;
+  padding: 12px 28px;
+  border-radius: 25px;
+  border: none;
+  background: #7a47ff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.browse-btn:hover {
+  background: #6334e2;
+  transform: translateY(-3px);
+}
+
+/* Responsive  */
+@media (max-width: 768px) {
+  .home {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .book-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 26px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+}
