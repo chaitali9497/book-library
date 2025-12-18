@@ -12,9 +12,9 @@ A simple web app for browsing and managing books — built with modern JavaScrip
 ##  Features
 
 -  Browse a list of books
--  Search/filter books (if implemented)
+-  Search/filter books
 -  View details for each book
--  Add/Delete books (if enabled in the UI)
+-  Add/Delete books
 -  Responsive and clean UI
 
 
@@ -38,14 +38,17 @@ This project uses the following technologies:
 
 ---
 
-##  Getting Started
 
-Follow these steps to run this project locally:
+##  How to Run the Project
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/chaitali9497/book-library.git
+Follow the steps below to run the App locally on your machine.
 
-## npm install
-## npm run dev
+### Clone the repository
+```bash
+git clone https://github.com/chaitali9497/book-library.git
+
+### Goto terminal
+```bash
+npm install
+npm run
 
