@@ -39,7 +39,7 @@ import BookCard from "../Components/BookCard";
       <h2 className="section-title">Popular Books</h2>
 
       <div className="book-list">
-        {(showAll ? filteredBooks : filteredBooks.slice(0, 6)).map((b) => (
+        {(showAll ? filteredBooks : filteredBooks.slice(0, 5)).map((b) => (
           <BookCard key={b.id} book={b} />
         ))}
       </div>

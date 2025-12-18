@@ -2,18 +2,21 @@ import { Link } from "react-router-dom";
 import noImage from "../assets/No-Image.svg"; 
 import "./BookCard.css";
 
- function BookCard({ book }) {
+function BookCard({ book }) {
   return (
     <div className="book-card">
-      <img
-        src={book.coverImage}
-        alt={book.title}
-        className="book-cover"
-        onError={(e) => {
-          e.target.onerror = null;   
-          e.target.src = noImage; 
-        }}
-      />
+      <div className="book-image-wrapper">
+        <img
+          src={book.coverImage}
+          alt={book.title}
+          className="book-cover"
+          loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = noImage;
+          }}
+        />
+      </div>
 
       <h3>{book.title}</h3>
       <p>by {book.author}</p>
@@ -22,4 +25,5 @@ import "./BookCard.css";
     </div>
   );
 }
+
 export default BookCard;

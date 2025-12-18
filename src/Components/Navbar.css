@@ -73,6 +73,13 @@
 .nav-menu li a:hover {
   color: #ffd86a;
 }
+.nav-menu li a.active {
+  color: #ffd86a;
+}
+
+.nav-menu li a.active::after {
+  width: 100%;
+}
 
 
 .hamburger {

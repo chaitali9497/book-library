@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/bl-logo.png";
 import { useState } from "react";
+ 
 
 function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -29,21 +30,40 @@ function Navbar() {
       </div>
 
      
-      <ul className={`nav-menu ${openMenu ? "show" : ""}`}>
+    
+<ul className={`nav-menu ${openMenu ? "show" : ""}`}>
+ <li>
+    <NavLink
+      to="/"
+      end
+      onClick={closeMenu}
+      className={({ isActive }) => (isActive ? "active" : "")}
+    >
+      Home
+    </NavLink>
+  </li>
 
-        <li>
-          <Link to="/" onClick={closeMenu}>Home</Link>
-        </li>
+  <li>
+    <NavLink
+      to="/books/Fiction"
+      onClick={closeMenu}
+      className={({ isActive }) => (isActive ? "active" : "")}
+    >
+      Browse Books
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/add"
+      onClick={closeMenu}
+      className={({ isActive }) => (isActive ? "active" : "")}
+    >
+     Add Book
+    </NavLink>
+  </li>
+</ul>
 
-        <li>
-          <Link to="/books/Fiction" onClick={closeMenu}>Browse Books</Link>
-        </li>
 
-        <li>
-          <Link to="/add" onClick={closeMenu}>Add Book</Link>
-        </li>
-
-      </ul>
 
     </nav>
   );
