@@ -47,8 +47,7 @@ Follow the steps below to run the App locally on your machine.
 ```bash
 git clone https://github.com/chaitali9497/book-library.git
 
-### Goto terminal
-```bash
+
 npm install
 npm run
 
