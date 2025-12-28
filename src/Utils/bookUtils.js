@@ -7,7 +7,7 @@ export const fetchBooks = async () => {
 };
 
 export const fetchBookById = async (id) => {
-  const res = await fetch(`${BASE_URL}/${id}`);
+  const res = await fetch(`http://localhost:3000/api/books/${id}`);
   const data = await res.json();
   return data.data;
 };
@@ -23,3 +23,6 @@ export const addBook = async (book) => {
 export const deleteBook = async (id) => {
   await fetch(`${BASE_URL}/${id}`, { method: "DELETE" });
 };
+
+
+
