@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addBook } from "../Utils/booksSlice";
 import { useNavigate } from "react-router-dom";
+import { addBook } from "../Utils/bookUtils";
 import StarRating from "../Components/StarRating.jsx";
-import noImage from "../assets/No-Image.svg";  
+import noImage from "../assets/No-Image.svg";
 import "./AddBook.css";
 import { toast } from "react-toastify";
 
@@ -16,33 +15,41 @@ function AddBook() {
     description: ""
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
- function handleSubmit(e) {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (
-    form.title.trim() === "" ||
-    form.author.trim() === "" ||
-    form.category.trim() === "" ||
-    form.rating === 0
-  ) {
-    toast.error("All fields are required!");
-    return;
-  }
-
+    if (
+      form.title.trim() === "" ||
+      form.author.trim() === "" ||
+      form.category.trim() === "" ||
+      form.rating === 0
+    ) {
+      toast.error("All fields are required!");
+      return;
+    }
 
     const newBook = {
-      id: Date.now(),
-      coverImage: noImage,   
-      ...form
+      title: form.title,
+      author: form.author,
+      category: form.category,
+      rating: form.rating,
+      description: form.description,
+      coverImage: noImage,
+      pages: 0,
+      publishDate: new Date().toISOString()
     };
 
-    dispatch(addBook(newBook));
-
-    navigate(`/books/${form.category}?added=true&id=${newBook.id}`);
-  }
+    try {
+      await addBook(newBook);
+      toast.success("Book added successfully!");
+      navigate(`/books/${form.category}?added=true`);
+    } catch (error) {
+      toast.error("Failed to add book");
+      console.error(error);
+    }
+  };
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>

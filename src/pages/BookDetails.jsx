@@ -1,55 +1,70 @@
-import { useParams,  useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { deleteBook } from "../Utils/booksSlice";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchBookById, deleteBook } from "../Utils/bookUtils";
 import "./BookDetails.css";
-
 
 function BookDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  
-  
-  const book = useSelector((state) =>
-    state.books.find((b) => b.id == id)
-  );
 
+  const [book, setBook] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  if (!book) {
-    return <h2 className="not-found">Book Not Found</h2>;
-  }
+  // 🔹 Fetch book by ID
+  useEffect(() => {
+    const loadBook = async () => {
+      try {
+        const data = await fetchBookById(id);
+        setBook(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  function handleDelete() {
-    setShowConfirm(true); 
-  }
+    loadBook();
+  }, [id]);
 
-  function confirmDelete() {
-    dispatch(deleteBook(book.id));
-    navigate("/books/All?deleted=true");
-  }
+  // 🔹 Delete book (API)
+  const confirmDelete = async () => {
+    try {
+      await deleteBook(id);
+      navigate("/books/All?deleted=true");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  if (loading) return <h2 className="not-found">Loading...</h2>;
+  if (!book) return <h2 className="not-found">Book Not Found</h2>;
 
   return (
     <div className="details-container">
       <div className="details-box">
-
         <h1>{book.title}</h1>
 
-        <p><span className="label">Author:</span> {book.author}</p>
-        <p><span className="label">Rating:</span> {book.rating}/5</p>
-        <p><span className="label">Description:</span> {book.description}</p>
+        <p>
+          <span className="label">Author:</span> {book.author}
+        </p>
+        <p>
+          <span className="label">Rating:</span> {book.rating}/5
+        </p>
+        <p>
+          <span className="label">Description:</span> {book.description}
+        </p>
 
         <div className="details-buttons">
-        
-            <button className="back-link" onClick={() => navigate(-1)}> Back</button>
-         
-          <button className="delete-btn" onClick={handleDelete}>
+          <button className="back-link" onClick={() => navigate(-1)}>
+            Back
+          </button>
+
+          <button className="delete-btn" onClick={() => setShowConfirm(true)}>
             Delete Book
           </button>
         </div>
 
-       
         {showConfirm && (
           <div className="modal-overlay">
             <div className="modal-box">
@@ -61,14 +76,16 @@ function BookDetails() {
                   Yes, Delete
                 </button>
 
-                <button className="cancel-btn" onClick={() => setShowConfirm(false)}>
+                <button
+                  className="cancel-btn"
+                  onClick={() => setShowConfirm(false)}
+                >
                   Cancel
                 </button>
               </div>
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
